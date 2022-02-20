@@ -1,3 +1,18 @@
+<?php
+{
+include("classes/connect.php");
+include("classes/post.php");
+}
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    $post = new Post();
+    $post->create_post($_POST);
+    print_r($_POST);
+} 
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,6 +148,7 @@
                         </div>
                     </div>
 
+                    <form method="post">
                     <div class="post-input-container">
                         <label for="post-text"></label>
                         <textarea id="post-text" name="post-text"
@@ -158,11 +174,17 @@
                                </label>
                                 
                                <input id="file-input" type="file" />
+
+                               <label for="submit">
+                                 <img src="Images/images/submit.png"/>
+                              </label>
+                                
+                             <input id="submit" type="submit"/>
                             </div>
                     </div>
+                    </form>
 
                 </div>
-
 
                 <div class="post-container">
                     <div class="post-row">
